@@ -7,6 +7,15 @@ export class PlanetsController extends BaseController {
     this.router
       .get('', this.getAll)
       .post('', this.create)
+      .get('/:planetId/colonies', this.getColoniesByPlanetId)
+  }
+  async getColoniesByPlanetId(req, res, next) {
+    try {
+      const colonies = await planetsService.getColoniesByPlanetId(req.params.planetId)
+      return res.send(colonies)
+    } catch (error) {
+
+    }
   }
   async getAll(req, res, next) {
     try {

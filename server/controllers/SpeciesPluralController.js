@@ -7,6 +7,7 @@ export class SpeciesPluralController extends BaseController {
     this.router
       .get('', this.getAll)
       .post('', this.create)
+      .get('/:speciesId/colonies')
   }
   async getAll(req, res, next) {
     try {

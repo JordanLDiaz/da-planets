@@ -1,6 +1,10 @@
 import { dbContext } from "../db/DbContext.js"
 
 class PlanetsService {
+  async getColoniesByPlanetId(planetId) {
+    const species = await dbContext.Colonies.find({ planetId }).populate('species')
+    return species
+  }
   async getAll() {
     const planets = await dbContext.Planets.find().populate('galaxy', 'name stars')
     return planets
